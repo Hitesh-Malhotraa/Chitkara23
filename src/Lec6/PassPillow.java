@@ -15,15 +15,18 @@ public static int sol(int n,int time)
 	int fp=-1;
 while(time>0)
 {
-	
-	for(int pos=1;pos<n&&time>0;pos++)
-	{fp=pos;
+	int pos=1;
+	for(;pos<n&&time>0;pos++)
+	{
 		time--;
 	}
-	for(int pos=n;pos>1&&time>0;pos--)
-	{fp=pos;
+  if(time==0)return pos;
+  pos=n;
+	for(;pos>1&&time>0;pos--)
+	{
 		time--;
 	}
+  if(time==0)return pos;
 }
 	return fp;
 	

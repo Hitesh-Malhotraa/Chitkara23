@@ -4,7 +4,8 @@ public class fibo {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-	fibo(5);
+	int ans=fibo(5);
+	System.out.println(ans);
 	}
 	public static int fibo(int n)
 	{
@@ -14,7 +15,6 @@ public class fibo {
 		}
 		int fh=fibo(n-1);
 		int sh=fibo(n-2);
-	int ans=fh+sh;
-	return ans;
+	return fh+sh;
 	}
 }

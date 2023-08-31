@@ -7,6 +7,7 @@ public class Occurance {
 int arr[]= {1,2,1,1,1};
 int val=1;
 int ans=count(arr,val,0,0);
+int res[]=new int[ans];
 	System.out.println(ans);
 	}
 	public static int count(int arr[],int val,int idx,int cnt)

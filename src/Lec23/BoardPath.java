@@ -7,13 +7,14 @@ public class BoardPath {
 		Scanner scn=new Scanner(System.in);
 		int dest=scn.nextInt();
 		int dice=scn.nextInt();
-		int ans=sol(0,dice,dest);
+		int ans=sol(0,dice,dest,"");
 		System.out.println(ans);
 	}
-	public static int sol(int cp,int dice,int dest)
+	public static int sol(int cp,int dice,int dest,String ans)
 	{
 		if(cp==dest)
 		{
+			System.out.println(ans);
 			return 1;
 		}
 		if(cp>dest)
@@ -23,7 +24,7 @@ public class BoardPath {
 		int cnt=0;
 		for(int i=1;i<=dice;i++)
 		{
-			cnt+=sol(cp+i,dice,dest);
+			cnt+=sol(cp+i,dice,dest,ans+i+" ");
 		}
 		return cnt;
 	}

@@ -1,0 +1,36 @@
+package Lec25;
+
+public class FindPath2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+int arr[][]=new int[4][4];
+arr[arr.length-1][arr.length-1]=1;
+boolean visited[][]=new boolean[4][4];
+sol(arr,0,arr.length-1,0,arr.length-1,"",visited);
+	}
+	public static void sol(int arr[][],int cr,int er,int cc,int ec,String ans,boolean visited[][])
+	{
+		if(cr<0||cc<0||cc>ec||cr>er||visited[cr][cc]==true||arr[cr][cc]==1)
+		{
+			return ;
+		}
+		if(cr==er&&cc==ec)
+		{
+			System.out.println(ans);
+			return;
+		}
+		
+		visited[cr][cc]=true;
+		//up
+		sol(arr,cr-1,er,cc,ec,ans+"U ",visited);
+		//down;
+		sol(arr,cr+1,er,cc,ec,ans+"D",visited);
+		//left;
+		sol(arr,cr,er,cc-1,ec,ans+"L ",visited);
+		//right
+		sol(arr,cr,er,cc+1,ec,ans+"R ",visited);
+		visited[cr][cc]=false;
+	}
+
+}

@@ -1,4 +1,5 @@
 package Lec24;
+import java.util.ArrayList;
 import java.util.Scanner;
 public class Keypad {
 
@@ -6,21 +7,31 @@ public class Keypad {
 		// TODO Auto-generated method stub
 Scanner scn=new Scanner(System.in);
 String str=scn.next();
-sol(str,"");
+ArrayList<String>ans=sol(str,"");
+	System.out.println(ans);
 	}
-	public static void sol(String str,String ans)
+	public static ArrayList<String> sol(String str,String ans)
 	{
 		if(str.length()==0)
 		{
-			System.out.println(ans);
-			return ;
+//			System.out.println(ans);
+			ArrayList<String>list=new ArrayList();
+			list.add(ans);
+			return list;
 		}
+		ArrayList<String>mr=new ArrayList();
 		char ch=str.charAt(0);
 		String s=getString(ch);
 		for(int i=0;i<s.length();i++)
 		{
-			sol(str.substring(1),ans+s.charAt(i));
+		ArrayList<String>res=sol(str.substring(1),ans+s.charAt(i));
+		for(int j=0;j<res.size();j++)
+		{
+			mr.add(res.get(j));
 		}
+		}
+		return mr;
+		
 	
 	}
 public static String getString(char ch)

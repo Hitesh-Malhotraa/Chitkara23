@@ -1,10 +1,11 @@
 package Lec25;
 
-public class FIndpath {
+public class Findpath_2 {
 
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 		int arr[][] = new int[4][4];
-		sol(arr, 0, arr.length - 1, 0, arr.length - 1, "", new boolean[4][4]);
+		sol(arr, 0, arr.length - 1, 0, arr.length - 1, "", new boolean[arr.length][arr.length]);
 	}
 
 	public static void sol(int arr[][], int cr, int er, int cc, int ec, String ans, boolean visited[][]) {
@@ -20,10 +21,12 @@ public class FIndpath {
 		sol(arr, cr - 1, er, cc, ec, ans + "U ", visited);
 		// down;
 		sol(arr, cr + 1, er, cc, ec, ans + "D ", visited);
-		// right;
-		sol(arr, cr, er, cc + 1, ec, ans + "R ", visited);
-		// left;
+		// left
 		sol(arr, cr, er, cc - 1, ec, ans + "L ", visited);
+		// right
+		sol(arr, cr, er, cc + 1, ec, ans + "R ", visited);
 		visited[cr][cc] = false;
+
 	}
+
 }

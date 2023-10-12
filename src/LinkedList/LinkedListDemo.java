@@ -86,15 +86,15 @@ public void addLast(int value)
 		}
 		return temp;
 	}
-	public void removeFirst()
-	{
-		if(head==null)
-		{
-			return;
-		}
-	head=head.next;
-	size--;
-	}
+//	public void removeFirst()
+//	{
+//		if(head==null)
+//		{
+//			return;
+//		}
+//	head=head.next;
+//	size--;
+//	}
 	public void removeLast()
 	{
 		if(head==null)
@@ -162,4 +162,11 @@ public void addLast(int value)
 	cnt++;
 	}
 	}
+//	g25
+	public void removeFirst()
+	{
+		head=head.next;
+		
+	}
+	
 }

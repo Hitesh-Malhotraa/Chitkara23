@@ -258,5 +258,9 @@ public void addLast(int value)
 			}
 			}
 		
-	}
+public node fold(node temp)
+{
+	
 }
+}
+

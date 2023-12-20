@@ -29,6 +29,7 @@ public class TreeConstruction {
 		scn = new Scanner(str);
 root=construct(null, false);
 display(root);
+leftView();
 	}
 
 	public node construct(node root, boolean flag) {
@@ -84,5 +85,24 @@ else {
 		System.out.println(str);
 display(root.left);
 display(root.right);
+	}
+	public void leftView()
+	{
+//		System.out.println("Hello");
+		leftView(root,true);
+	}
+	private void leftView(node root,boolean flag)
+	{if(root==null)
+	{
+//		System.out.println("null");
+		
+		return;
+	}
+	if(flag==true) {
+		System.out.println(root.val);
+	}
+		
+		leftView(root.left,true);
+		leftView(root.right,false);
 	}
 	}

@@ -105,4 +105,106 @@ display(root.right);
 		leftView(root.left,true);
 		leftView(root.right,false);
 	}
+	public void inorder()
+	{
+		inorder(root);
+	}
+	private void inorder(node root)
+	{
+	    if(root==null)
+        {
+            return;
+        }
+        
+        inorder(root.left);
+        System.out.println(root.val);
+        inorder(root.right);
+
+	}
+	public void preorder()
+	{
+		preorder(root);
+	}
+	private void preorder(node root)
+	{
+	    if(root==null)
+        {
+            return;
+        }
+        
+	    System.out.println(root.val);
+        preorder(root.left);
+        
+        preorder(root.right);
+		
+	}
+	public void postorder()
+	{
+		postorder(root);
+	}
+	private void postorder(node root)
+	{
+		   if(root==null)
+	        {
+	            return;
+	        }
+	        
+		   
+	        postorder(root.left);
+	        
+	        postorder(root.right);
+	        System.out.println(root.val);
+	}
+	public int diameter()
+	{
+		return diameter(root);
+	}
+	private int diameter(node root)
+	{
+		 if(root==null)return 0;
+		        int left=diameter(root.left);
+		        int right=diameter(root.right);
+		        int sd=height(root.left)+height(root.right)+2;
+		        return Math.max(left,Math.max(right,sd));
+		    }
+		    
+	
+	public boolean isBalanced()
+	{
+		return isBalanced(root);
+	}
+	private boolean isBalanced(node root)
+	{
+		 if(root==null)return true;
+	       boolean left=isBalanced(root.left);if(left==false)return false;
+	       boolean right=isBalanced(root.right);if(right==false)return false;
+	       int bf=height(root.left)-height(root.right);
+	       if(bf==0||bf==-1||bf==1)
+	           return true;
+	       return false;
+	}
+	public int height()
+	{
+		return height(root);
+	}
+	private int height(node root)
+	{
+		if(root==null)return -1;
+        int lh=height(root.left);
+        int rh=height(root.right);
+        return Math.max(lh,rh)+1;
+    
+	}
+	public int size()
+	{
+		return size(root);
+	}
+	private int size(node root)
+	{
+		if(root==null)return 0;
+		int left=size(root.left);
+		int right=size(root.right);
+		return left+right+1;
+		
+	}
 	}

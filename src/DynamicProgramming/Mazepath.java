@@ -1,16 +1,19 @@
 package DynamicProgramming;
 
+import java.util.Scanner;
+
 public class Mazepath {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-int arr[][]=new int[30][30];
-
-//		int ans=solTD(arr,0,0,arr.length-1,arr.length-1,new int[30][30]);
-int ans=solBu(arr);	
-System.out.println(ans);
+	Scanner scn=new Scanner(System.in);
+	int n=scn.nextInt();
+	int m=scn.nextInt();
+	int arr[][]=new int[n][m];
+//int res=solTD(arr,0,n-1,0,m-1,new int[n][m]);
+int res=solBu(arr);
+	System.out.println(res);
 	}
-	public static int sol(int arr[][],int cr,int cc,int er,int ec)
+	public static int sol(int arr[][],int cr, int er,int cc,int ec)
 	{
 		if(cr==er&&cc==ec)
 		{
@@ -20,11 +23,14 @@ System.out.println(ans);
 		{
 			return 0;
 		}
-		int down=sol(arr,cr+1,cc,er,ec);
-		int right=sol(arr,cr,cc+1,er,ec);
-		return down+right;
+		int cnt=0;
+		cnt+=sol(arr,cr+1,er,cc,ec);
+		cnt+=sol(arr,cr,er,cc+1,ec);
+		return cnt;
 	}
-	public static int solTD(int arr[][],int cr,int cc,int er,int ec,int dp[][])
+	
+	
+	public static int solTD(int arr[][],int cr, int er,int cc,int ec,int dp[][])
 	{
 		if(cr==er&&cc==ec)
 		{
@@ -38,30 +44,28 @@ System.out.println(ans);
 		{
 			return dp[cr][cc];
 		}
-		int down=solTD(arr,cr+1,cc,er,ec,dp);
-		int right=solTD(arr,cr,cc+1,er,ec,dp);
-		int res= down+right;
-	dp[cr][cc]=res;
-	return res;
+		int cnt=0;
+		cnt+=solTD(arr,cr+1,er,cc,ec,dp);
+		cnt+=solTD(arr,cr,er,cc+1,ec,dp);
+		dp[cr][cc]=cnt;
+		return cnt;		
 	}
-public static int solBu(int arr[][])
-{
-	int dp[][]=new int[arr.length+1][arr.length+1];
-dp[arr.length-1][arr.length-1]=1;
-for(int row=arr.length-1;row>=0;row--)
-{
-	for(int col=arr.length-1;col>=0;col--)
+	public static int solBu(int arr[][])
 	{
-		if(row==arr.length-1&&col==arr.length-1)
+		int dp[][]=new int[arr.length+1][arr[0].length+1];
+	dp[arr.length-1][arr[0].length-1]=1;
+	for(int row=arr.length-1;row>=0;row--)
+	{
+		for(int col=arr[0].length-1;col>=0;col--)
 		{
-			continue;
+			if(col==arr[0].length-1&&row==arr.length-1)
+			{
+				continue;
+			}
+			int res=dp[row][col+1]+dp[row+1][col];
+			dp[row][col]=res;
 		}
-		int down=dp[row+1][col];
-		int right=dp[row][col+1];
-		int res=down+right;
-		dp[row][col]=res;
 	}
-}
-return dp[0][0];
-}
+	return dp[0][0];
+	}
 }

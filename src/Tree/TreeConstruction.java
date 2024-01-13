@@ -14,7 +14,8 @@ public class TreeConstruction {
 	}
 
 	Scanner scn;
-	String str = "10 true 20 true 40 false false true 50 false false true 30 true 60 false false true 70 false false ";
+//	String str = "10 true 20 true 40 false false true 50 false false true 30 true 60 false false true 70 false false ";
+	String str="10 true 20 true 30 false false true 40 false false true 50 false true 60 false false";
 	node root = null;
 
 //node root;
@@ -22,14 +23,14 @@ public class TreeConstruction {
 		TreeConstruction tc = new TreeConstruction();
 
 		tc.check();
-
+tc.sol();
 	}
 
 	public void check() {
 		scn = new Scanner(str);
 root=construct(null, false);
-display(root);
-leftView();
+//display(root);
+//leftView();
 	}
 
 	public node construct(node root, boolean flag) {
@@ -206,5 +207,32 @@ display(root.right);
 		int right=size(root.right);
 		return left+right+1;
 		
+	}
+	
+	public void sol()
+	{
+		sol(root);
+	}
+	public void sol(node root)
+	{
+		if(root==null)
+	{
+		return ;
+	}
+//		System.out.println(root.val);
+		if(root.left==null&&root.right!=null)
+		{
+			System.out.println(root.val);
+		}
+		if(root.left!=null&&root.right==null)
+		{
+			System.out.println(root.val);
+		}
+		sol(root.left);
+		sol(root.right);
+	}
+	public void display()
+	{
+		display(root);
 	}
 	}
